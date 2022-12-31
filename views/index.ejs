@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    
+    <div class="hero" data-aos="fade-in">
+        <h1 class="hero__header">Authorize first,</h1>
+        <p class="hero__text"> so you can manage your tasks.</p>
+        <div class="hero__buttons">
+            <a class="hero__log-in" id="open-log-in" href='/login'">Log in</a>
+            <a class=" hero__sign-up" id="open-sign-up" href='/signup'">Sign up</a>
+        </div>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+
+    <%- include("./partials/aos.ejs") %>
+</body>
+</html>

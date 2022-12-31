@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+    <%- include("./partials/header-auth.ejs") %> 
+
+    <div class="new-task">
+        <h2 class="title">Add new task</h2>
+        <form class="new-task__form">
+
+            <label for="newTaskName"></label>
+            <textarea name="newTaskName" id="newTaskName" placeholder="Your task..." required></textarea>
+    
+            <div class="buttons">
+                <label for="newTaskAdd"></label>
+                <button type="submit" id="newTaskAdd" class="submit-button">Add +</button>
+    
+                <label for="newTaskCancel"></label>
+                <a id="newTaskCancel" class="cancel-button" href="/my-tasks/<%=id %> ">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+
+    <script src="/js/addTask.js"></script>
+</body>
+
+</html>
