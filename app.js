@@ -2,21 +2,34 @@ const express = require("express");
 const { use } = require("express/lib/application");
 const bodyParser = require("body-parser");
 const routes = require("./routes/index");
-const connection = require("./config/database");
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
 const passport = require("passport");
-const connectDB= require("./config/database");
+// const {connectDB}= require("./config/database");
 const { connect } = require("mongoose");
 const flash = require("connect-flash");
 const errorHandler = require("./lib/errorHandler");
 //_______________________________________________________
 require("dotenv").config();
 //_______________________________________________________
-//DATABASE
-connectDB().catch((err) => {console.log(err)})
-//_______________________________________________________
 const app = express();
+//_______________________________________________________
+//DATABASE
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true })
+    .catch(err => {console.log("Cannot access the database: ", err)})
+
+const db = mongoose.connection;
+
+db.once("open", () => {
+    console.log("Connection to the database is established");
+})
+db.on("error", (err) => {
+    console.log("Connection error: ", err)
+})
+
+//_______________________________________________________
 //VIEW ENGINE
 app.set("view engine", "ejs");
 //_______________________________________________________
@@ -27,7 +40,7 @@ app.use(express.static("public"));
 app.use(bodyParser.text());
 
 //SESSIONS SETUP
-const store = MongoStore.create({ mongoUrl: process.env.DB_STRING, collectionName: "sessions"});
+const store = MongoStore.create({ client: db.getClient(), mongoUrl: process.env.DB_STRING, collectionName: "sessions"});
 
 app.use(session({
     secret: process.env.SECRET,

@@ -19,10 +19,6 @@ const strategy = new LocalStrategy(async (username, password, done) => {
     }catch(err){
         done(err);
     }
-
-    
-
-
 })
 
 passport.use(strategy);
