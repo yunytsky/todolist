@@ -273,9 +273,10 @@ body {
 }
 
 .tasks__empty{
-    @include indie-flower;
+    @include work-sans-thin;
     color: $dark-gray-button;
-    font-size: 2rem;
+    color: $light-gray;
+    font-size: 1.8rem;
     margin-bottom: -1em;
 }
 
