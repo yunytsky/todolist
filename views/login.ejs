@@ -6,7 +6,6 @@
 </head>
 <body>
     <%- include("./partials/header.ejs") %> 
-    
     <div class="log-in">
         <% if(messages[0].length != 0) {%> 
             <span class="notification-error">
@@ -17,7 +16,6 @@
                 <%= messages[1][0] %>
             </span>
         <% } %> 
-
         <div class="log-in__image">
             <img src="/img/signup-image.svg" >
         </div>
@@ -37,9 +35,7 @@
             </form>
         </div>
     </div>
-
     <%- include("./partials/footer.ejs") %>
-
     <%- include("./partials/aos.ejs") %>
 </body>
 </html>

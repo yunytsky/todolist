@@ -1,3 +1,12 @@
+//ERROR MESSAGE
+const body = document.querySelector("body")
+let internalError = document.createElement("span");
+internalError.className = "internal-error";
+internalError.innerHTML = "Internal server error";
+function displayErrorMessage(){
+    body.append(internalError);
+}
+
 //DELETE
 const taskList = document.querySelector(".tasks__list");
 const tasksBtns = document.querySelector(".tasks__buttons");
@@ -16,13 +25,16 @@ deleteBtns.forEach((deleteBtn) => {
         fetch("/my-tasks/:id/delete", {
             method: "PATCH",
             body: id
-        }).then(() => {
+        }).then((res) => {
+            if (!res.ok) {
+                throw new Error("Cannot delete the task")
+            }
             task.remove();
             if(taskList.childElementCount == 0){
                 taskList.appendChild(empty);
             }
-    
         }).catch((err) => {
+            displayErrorMessage();
             console.log(err);
         })
     })
@@ -32,7 +44,10 @@ deleteAllBtn.addEventListener("click", (event) => {
     const taskList = event.currentTarget.parentElement.previousElementSibling;
     fetch("/my-tasks/:id/delete-all", {
         method: "PATCH"
-    }).then(() => {
+    }).then((res) => {
+        if(!res.ok) {
+            throw new Error("Cannot delete the tasks")
+        }
         let tasks = [];
         for (const task of taskList.children) {
             tasks.push(task);
@@ -40,21 +55,20 @@ deleteAllBtn.addEventListener("click", (event) => {
         tasks.forEach(task => {
             task.remove();
         })
-
         taskList.appendChild(empty);
 
     }).catch((err) => {
+        displayErrorMessage();
         console.log(err);
     })
 });
 
 //EDIT
-const body = document.querySelector("body")
 const editBtns = document.querySelectorAll(".task__edit");
 
 editBtns.forEach((editBtn) => {
     editBtn.addEventListener("click", (event) => {
-        //creating a form
+        //Creating a form
         const oldName = event.currentTarget.parentElement.previousElementSibling.lastElementChild;
         oldName.remove()
         
@@ -63,12 +77,12 @@ editBtns.forEach((editBtn) => {
         
         const editForm = document.createElement("form");
         editForm.className = "task__edit-form";
-        editForm.innerHTML = "<input type='submit' hidden> <input type='text' name='name' id='newName' placeholder='Write a name and press enter' autofocus>";
+        editForm.innerHTML = "<input type='submit' hidden> <input type='text' name='name' id='newName' placeholder='Write and press enter...'>";
 
         taskNameContainer.appendChild(editForm);
         checkbox.style.pointerEvents = "none";
 
-        //submitting new name
+        //Submitting new name
         const id = event.currentTarget.parentElement.id;
         const newName = document.createElement("p")
         newName.className = "task__name";
@@ -78,8 +92,6 @@ editBtns.forEach((editBtn) => {
         if (checkbox.classList.contains("checked")){
             line.classList.add("checked");
         }
-        console.log(line)
-        console.log(newName)
 
         editForm.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -93,18 +105,20 @@ editBtns.forEach((editBtn) => {
                 method: "PATCH",
                 body: JSON.stringify(body),
                 headers: {"content-type": "application/json"}
-            }).then(() => {
+            }).then((res) => {
+                if (!res.ok) {
+                    throw new Error("Cannot edit the tasks")
+                }
                 editForm.remove();
                 checkbox.style.pointerEvents = "auto";
                 newName.innerText = newNameValue;
                 newName.appendChild(line);
                 taskNameContainer.appendChild(newName);
-                console.log("task name has been changed")
             }).catch((err) => {
+                displayErrorMessage();
                 console.log(err);
             })
         })
-        
     })
 });
 
@@ -118,23 +132,16 @@ checkboxes.forEach((checkbox) => {
         fetch("/my-tasks/:id", {
             method: "PATCH",
             body: id
-        }).then(() => {
+        }).then((res) => {
+            if (!res.ok) {
+                throw new Error("Cannot check the tasks")
+            }
             checkbox.classList.toggle("checked");
             line.classList.toggle("checked");
         }).catch((err) => {
+            displayErrorMessage();
             console.log(err);
         })
 
     })
 });
-
-
-
-
-
-
-
-
-
-//set up error handlers
-// add icon

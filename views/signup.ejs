@@ -6,9 +6,7 @@
 </head>
 <body>
     <%- include("./partials/header.ejs") %>
-
     <main class="sign-up">
-        
         <% if(messages.length !=0) {%>
             <span class="notification-error">
                 <%= messages[0] %>
@@ -35,9 +33,7 @@
             </form>
         </div>
     </main>
-
     <%- include("./partials/footer.ejs") %>
-
     <%- include("./partials/aos.ejs") %>
 </body>
 </html>

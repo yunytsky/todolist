@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include("./partials/head.ejs") %>
     <title>ToDoList — <%=username %></title>
@@ -12,10 +11,8 @@
         }
     </style>
 </head>
-
 <body>
     <%- include("./partials/header-auth.ejs") %> 
-
     <div class="tasks">
         <h3 class="tasks__header">My tasks</h3>
         <ul class="tasks__list">
@@ -27,9 +24,6 @@
                 <% for (let i = 0; i < tasks.length; i++) { %>
                     <li class="tasks__task task">
                         <div class="task__main" id="<%=i%>" >
-
-                            
-
                             <label id="checkbox-wrap">
                                 <input type="checkbox" id="checkbox" name="checkbox">
                                 <span <%if (tasks[i].done == true){%>
@@ -49,9 +43,6 @@
                                       <% } %> 
                                 ></span>
                             </p>
-
-                            
-    
                         </div>
                         <div class="task__operations" id="<%=i%>">
                             <button class="task__edit"><img src="/img/edit.svg" alt=""></button>
@@ -61,7 +52,6 @@
                     </li>
                 <% } %> 
             <% } %> 
-
         </ul>
         <div class="tasks__buttons">
             <a class="tasks__add" href="/my-tasks/<%= id %>/add">Add new</a>
@@ -70,7 +60,6 @@
     </div>
 
     <%- include("./partials/footer-auth.ejs") %>
-   
     <script src="/js/script.js"></script>
 </body>
 
