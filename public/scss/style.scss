@@ -329,7 +329,7 @@ body {
     text-transform: uppercase;
     color: $blue;
     margin-bottom: .2em;
-    letter-spacing: .1em;
+    letter-spacing: .06em;
 }
 
 .hero__text {
@@ -423,29 +423,6 @@ body {
 
 .notification-success{
     background-color: rgb(40, 173, 40);
-}
-
-//
-//__________________________________________
-//footer
-.footer{
-    font-size: .825rem;
-    display: inline-block;
-    position: absolute;
-    left: .25em;
-    bottom: .5em;
-    color: $light-gray;
-}
-
-.footer-auth{
-    font-size: .8rem;
-    user-select: none;
-    background-color: $blue;
-    width: 100%;
-    padding: .7em;
-    color: #fff;
-    text-align: center;
-    flex: 0 0 auto;
 }
 //__________________________________________
 //404

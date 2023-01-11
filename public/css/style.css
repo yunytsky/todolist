@@ -36,7 +36,6 @@ a :active {
 }
 
 nav,
-footer,
 header,
 aside {
   display: block;
@@ -736,7 +735,7 @@ body {
   text-transform: uppercase;
   color: #3057e8;
   margin-bottom: .2em;
-  letter-spacing: .1em;
+  letter-spacing: .06em;
 }
 
 .hero__text {
@@ -863,32 +862,6 @@ body {
   background-color: #28ad28;
 }
 
-.footer {
-  font-size: .825rem;
-  display: inline-block;
-  position: absolute;
-  left: .25em;
-  bottom: .5em;
-  color: #767676;
-}
-
-.footer-auth {
-  font-size: .8rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-color: #3057e8;
-  width: 100%;
-  padding: .7em;
-  color: #fff;
-  text-align: center;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-}
-
 .error {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1001,9 +974,6 @@ body {
   .sign-up__form,
   .log-in__form {
     width: 80vw;
-  }
-  .footer-auth {
-     font-size: .5rem;
   }
 }
 
