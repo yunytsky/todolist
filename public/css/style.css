@@ -209,7 +209,7 @@ button {
 
 .submit-button {
   background-color: #3057e8;
-  margin-right: 1em;
+  margin-right: 1.5em;
 }
 
 .submit-button:hover {
@@ -927,7 +927,7 @@ body {
   }
   .hero__log-in,
   .hero__sign-up {
-    width: 20vw;
+    width: 25vw;
   }
   .error img {
     width: 80vw;
