@@ -36,6 +36,7 @@ a :active {
 }
 
 nav,
+footer,
 header,
 aside {
   display: block;
@@ -668,8 +669,7 @@ body {
 }
 
 .tasks__empty {
-  font-family: 'Work Sans',
- sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 100;
   color: #d1d1d1;
   color: #767676;
@@ -906,8 +906,9 @@ body {
   .error img {
     width: 80vw;
   }
-  .notification-auth,
-  .notification-success {
+  .notification-error,
+  .notification-success,
+  .internal-error {
     width: 25vw;
   }
   .sign-up,
@@ -945,6 +946,11 @@ body {
   .sign-up__image img,
   .log-in__image img {
     width: 100%;
+  }
+  .notification-error,
+  .notification-success,
+  .internal-error {
+    width: 30vw;
   }
 }
 
@@ -1024,8 +1030,9 @@ body {
     max-width: 30vw;
     margin-right: 0;
   }
-  .notification-auth,
-  .notification-success {
-    width: 30vw;
+  .notification-error,
+  .notification-success,
+  .internal-error {
+    width: 35vw;
   }
 }

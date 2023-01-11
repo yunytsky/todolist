@@ -34,8 +34,9 @@
         }
     }
 
-    .notification-auth,
-    .notification-success{
+   .notification-error,
+   .notification-success,
+   .internal-error{
         width: 25vw;
     }
     //signup/login
@@ -67,6 +68,12 @@
             width: 100%;
         }
     }
+
+   .notification-error,
+   .notification-success,
+   .internal-error {
+      width: 30vw;
+   }
 
 }
 
@@ -162,8 +169,9 @@
         margin-right: 0;
     }
 
-    .notification-auth,
-    .notification-success {
-        width: 30vw;
-    }
+   .notification-error,
+   .notification-success,
+   .internal-error {
+      width: 35vw;
+   }
 }
