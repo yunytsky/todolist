@@ -329,6 +329,7 @@ body {
     text-transform: uppercase;
     color: $blue;
     margin-bottom: .2em;
+    letter-spacing: .1em;
 }
 
 .hero__text {
@@ -430,10 +431,9 @@ body {
 .footer{
     display: inline-block;
     position: absolute;
-    left: -3em;
-    bottom: 4em;
+    left: .25em;
+    bottom: .5em;
     color: $light-gray;
-    transform: rotate(-90deg);
 }
 
 .footer-auth{
