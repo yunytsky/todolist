@@ -1002,6 +1002,9 @@ body {
   .log-in__form {
     width: 80vw;
   }
+  .footer-auth {
+     font-size: .5rem;
+  }
 }
 
 @media screen and (max-width: 360px) {
