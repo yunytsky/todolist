@@ -9,25 +9,17 @@ const passport = require("passport");
 const { connect } = require("mongoose");
 const flash = require("connect-flash");
 const errorHandler = require("./lib/errorHandler");
-//_______________________________________________________
 require("dotenv").config();
-//_______________________________________________________
 const app = express();
 //_______________________________________________________
+
 //DATABASE
 const mongoose = require("mongoose");
-
 mongoose.connect(process.env.DB_STRING, { useNewUrlParser: true })
-    .catch(err => {console.log("Cannot access the database: ", err)})
-
-const db = mongoose.connection;
-
-db.once("open", () => {
-    console.log("Connection to the database is established");
-})
-db.on("error", (err) => {
-    console.log("Connection error: ", err)
-})
+    .then(() => {
+        console.log("Connection to the database is established");
+    })
+    .catch(err => {console.log("Database connection error: ", err)})
 
 //_______________________________________________________
 //VIEW ENGINE
@@ -40,10 +32,12 @@ app.use(express.static("public"));
 app.use(bodyParser.text());
 
 //SESSIONS SETUP
-const store = MongoStore.create({ client: db.getClient(), mongoUrl: process.env.DB_STRING, collectionName: "sessions"});
+const store = MongoStore.create({ mongoUrl: process.env.DB_STRING, collectionName: "sessions"});
 
 app.use(session({
     secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
     store: store
 }))
 
@@ -66,8 +60,7 @@ app.use((req, res) => {
     res.status(404).render("404.ejs");
 })
 
-
-//APP LISTENING
+//SERVER
 app.listen(process.env.PORT || 3000, () => {
     console.log("App is listening on PORT 3000");
 });
